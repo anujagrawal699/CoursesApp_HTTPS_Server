@@ -55,7 +55,7 @@ app.post('/admin/login', (req, res) => {
 
 });
 
-app.post('/admin/courses', (req, res) => {
+app.post('/admin/courses', adminAuthentication, (req, res) => {
   // logic to create a course
   const course = req.body;
   course.id = Date.now();
@@ -63,7 +63,7 @@ app.post('/admin/courses', (req, res) => {
   res.json({ message: "Course created successfully", courseId: course.id });
 });
 
-app.put('/admin/courses/:courseId', (req, res) => {
+app.put('/admin/courses/:courseId', adminAuthentication, (req, res) => {
   // logic to edit a course
   const courseId = parseInt(req.params.courseId);
   const course = COURSES.find(c => c.id === courseId);
@@ -76,7 +76,7 @@ app.put('/admin/courses/:courseId', (req, res) => {
   }
 });
 
-app.get('/admin/courses', (req, res) => {
+app.get('/admin/courses', adminAuthentication, (req, res) => {
   // logic to get all courses
   res.json({ courses: COURSES });
 });
@@ -98,14 +98,14 @@ app.post('/users/login', (req, res) => {
   res.json({ message: "Logged in successfully" });
 });
 
-app.get('/users/courses', (req, res) => {
+app.get('/users/courses', userAuthentication, (req, res) => {
   // logic to list all courses
   const filteredCourses = COURSES.filter(c => c.published);
   res.json({ courses: filteredCourses });
 
 });
 
-app.post('/users/courses/:courseId', (req, res) => {
+app.post('/users/courses/:courseId', userAuthentication, (req, res) => {
   // logic to purchase a course
   const courseId = Number(req.params.courseId);
   const course = COURSES.find(c => c.id === courseId && c.published);
@@ -117,7 +117,7 @@ app.post('/users/courses/:courseId', (req, res) => {
   }
 });
 
-app.get('/users/purchasedCourses', (req, res) => {
+app.get('/users/purchasedCourses', userAuthentication, (req, res) => {
   // logic to view purchased courses
   var purchasedCourseIds = req.user.purchasedCourses;[1, 4];
   var purchasedCourses = [];

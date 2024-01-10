@@ -18,7 +18,7 @@
    Input: { username: 'admin', password: 'pass' }
    Output: { message: 'Admin created successfully' }
  - POST /admin/login
-   Description: Authenticates an admin. It requires the admin to send username and password in the headers.
+   Description: Authenticates an admin. It requires the admin to send username and password in the headers
    Input: Headers: { 'username': 'admin', 'password': 'pass' }
    Output: { message: 'Logged in successfully' }
  - POST /admin/courses
