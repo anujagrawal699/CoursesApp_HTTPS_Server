@@ -11,6 +11,13 @@
 6. Users should be able to view purchased courses
 7. Users should be able to view all courses
 
+
+Senior Versions:      
+https://github.com/anujagrawal699/CoursesApp_HTTPS_Server_MongoDB      
+https://github.com/anujagrawal699/CoursesApp_HTTPS_Server_FileSystem    
+https://github.com/anujagrawal699/CoursesApp_HTTPS_Server_JWT   
+
+
 ## Routes
 ### Admin Routes:
  - POST /admin/signup
